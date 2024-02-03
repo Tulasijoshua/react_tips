@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import connected from '../img/connected.jpg';
-import connectionLost from '../img/connection_lost.jpg';
+import networkLost from '../img/connection_lost.jpg';
 
 const Network = () => {
     const [status, setStatus] = useState(() => {
@@ -24,7 +24,19 @@ const Network = () => {
       }, [status]);
 
   return (
-    <div>Network</div>
+    <div>
+      <h2 className="mb-3">React Detect Network Connection Status Example</h2>
+      {status ? (
+        <>
+          <div className="alert alert-success mb-3">
+            Network is fullly connected
+          </div>
+          <img src={connected} width={420} alt="Logo" />
+        </>
+      ) : (
+        <img src={networkLost} width={420} alt="Logo" />
+      )}
+    </div>
   )
 }
 
