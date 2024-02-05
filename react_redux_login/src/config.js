@@ -1,3 +1,1 @@
-const hostName = 'https://cointossapi.pythonanywhere.com/'
-
-export default hostName;
+export const hostName = 'https://api.penoraskincare.com/';
