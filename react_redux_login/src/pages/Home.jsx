@@ -16,7 +16,8 @@ const Home = () => {
     const [user, setUser] = useState(getUser())
 
     const handleLogout = () => {
-        localStorage.removeItem('user')
+        localStorage.removeItem('user');
+        setUser(null);
     }
 
   return (
