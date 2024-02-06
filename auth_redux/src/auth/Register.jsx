@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { signUpUser } from '../redux/authSlice'
 
 const Register = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const dispatch = useDispatch()
+
     const registerHandle = () => {
         console.table(name, email, password)
+        dispatch(signUpUser({name, email, password}))
     }
   return (
     <div>
