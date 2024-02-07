@@ -7,7 +7,7 @@ export const loginUser = createAsyncThunk(
     async(userCredentials)=> {
         const request = await axios.post(`${hostName}api/v1/auth/login/`, userCredentials);
         const response = await request.data;
-        console.log(request.data)
+        console.log(request)
         localStorage.setItem('user', JSON.stringify(response));
 
         return response;
@@ -37,7 +37,7 @@ const userSlice = createSlice({
         .addCase(loginUser.rejected, (state, action) => {
             state.loading = false;
             state.user = null;
-            console.log(action.error);
+            console.log('Error message', action.error);
             if(action.error.message === 'Request failed with status code 401') {
                 state.error = 'Access Denied! Invalid Credentials';
             } else {

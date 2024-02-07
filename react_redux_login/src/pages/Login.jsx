@@ -5,9 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
-    const [name, setName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     // redux state
     const { loading, error } = useSelector((state) => state.user);
@@ -18,7 +21,7 @@ const Login = () => {
     const handleLoginEvent = (e) => {
         e.preventDefault();
         let userCredentials={
-            name, email, password
+            email, password
         }
         dispatch(loginUser(userCredentials)).then((result) => {
             if(result.payload) {
@@ -31,12 +34,18 @@ const Login = () => {
 
     // const handleLoginEvent = (e) => {
     //     e.preventDefault();
+    //     // let userCredentials={
+    //     //     first_name: firstName, last_name: lastName, username: username, email, password, password_confirm: confirmPassword
+    //     //         }
     //     let userCredentials={
-    //                 email, password
+    //         email, password
     //             }
     //     axios.post('https://cointossapi.pythonanywhere.com/api/auth/login/', userCredentials)
+    //     // axios.post('https://cointossapi.pythonanywhere.com/api/auth/register/', userCredentials)
+    //     // axios.post('http://localhost:8000/api/auth/register/', userCredentials)
     //         .then((response) => {
     //             const result = response.data;
+    //             console.log(result)
 
     //         })
     //         .catch((err) => {
@@ -48,10 +57,20 @@ const Login = () => {
 
   return (
     <form className='form-group custom-form' onSubmit={handleLoginEvent}>
-        {/* <label>Name</label>
-        <input type='text' required className='form-control'
-            value={name} onChange={(e) => setName(e.target.value)}
-        /> */}
+        <label>First name</label>
+        <input type='text'  className='form-control'
+            value={firstName} onChange={(e) => setFirstName(e.target.value)}
+        />
+        <br />
+        <label>Last name</label>
+        <input type='text'  className='form-control'
+            value={lastName} onChange={(e) => setLastName(e.target.value)}
+        />
+        <br />
+        <label>Username</label>
+        <input type='text'  className='form-control'
+            value={username} onChange={(e) => setUsername(e.target.value)}
+        />
         <br />
         <label>Email</label>
         <input type='email' required className='form-control'
@@ -61,6 +80,11 @@ const Login = () => {
         <label>Password</label>
         <input type='password' required className='form-control'
             value={password} onChange={(e) => setPassword(e.target.value)}
+        />
+        <br />
+        <label>Confirm password</label>
+        <input type='password'  className='form-control'
+            value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}
         />
         <br />
         <button type='submit' className='btn btn-success btn-md'>
