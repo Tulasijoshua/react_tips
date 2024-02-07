@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { hostName } from "../config";
 
 const initialState = {
-    msg: "",
-    user: "",
+    message: "",
+    data: "",
     token: "",
     loading: false,
     error: ""
@@ -21,7 +22,7 @@ export const signUpUser = createAsyncThunk('signupuser', async(body) => {
 })
 
 export const signInUser = createAsyncThunk('signinuser', async(body) => {
-    const res = await fetch("https://cointossapi.pythonanywhere.com/api/auth/login/", {
+    const res = await fetch(`${hostName}api/v1/auth/login/`, {
         method: "post",
         headers: {
             'Content-Type': "application/json",
@@ -30,6 +31,7 @@ export const signInUser = createAsyncThunk('signinuser', async(body) => {
         body: JSON.stringify(body)
     })
     return await  res.json();
+    // console.log(res.data)
 })
 
 const authSlice = createSlice({
@@ -52,17 +54,17 @@ const authSlice = createSlice({
         .addCase (signInUser.pending, (state, action) => {
             state.loading = true
         })
-        .addCase(signInUser.fulfilled,(state, {payload: {error, msg, token, user}}) => {
+        .addCase(signInUser.fulfilled,(state, {payload: {error, message, token, data}}) => {
             state.loading = false;
             if (error) {
                 state.error = error;
             } else {
-                state.msg = msg;
+                state.message = message;
                 state.token = token;
-                state.user = user;
+                state.data = data;
 
-                localStorage.setItem('msg', msg)
-                localStorage.setItem('user', JSON.stringify(user))
+                localStorage.setItem('message', message)
+                localStorage.setItem('user', JSON.stringify(data))
                 localStorage.setItem('token', token)
             }
         })
@@ -72,12 +74,12 @@ const authSlice = createSlice({
         .addCase (signUpUser.pending, (state, action) => {
             state.loading = true
         })
-        .addCase(signUpUser.fulfilled,(state, {payload: {error, msg}}) => {
+        .addCase(signUpUser.fulfilled,(state, {payload: {error, message}}) => {
             state.loading = false;
             if (error) {
                 state.error = error
             } else {
-                state.msg = msg
+                state.message = message
             }
         })
         .addCase(signUpUser.rejected, (state, action) => {
@@ -89,16 +91,16 @@ const authSlice = createSlice({
 
 //*****************login */
 
-// [signInUser.fulfilled]: (state, {payload: {error, msg, token, user}}) => {
+// [signInUser.fulfilled]: (state, {payload: {error, message, token, user}}) => {
 //     state.loading = false;
 //     if (error) {
 //         state.error = error;
 //     } else {
-//         state.msg = msg;
+//         state.message = message;
 //         state.token = token;
 //         state.user = user;
 
-//         localStorage.setItem('msg', msg)
+//         localStorage.setItem('message', message)
 //         localStorage.setItem('user', JSON.stringify(user))
 //         localStorage.setItem('token', token)
 //     }
@@ -110,12 +112,12 @@ const authSlice = createSlice({
 // [signUpUser.pending]: (state, action) => {
 //     state.loading = true
 // },
-// [signUpUser.fulfilled]: (state, {payload: {error, msg}}) => {
+// [signUpUser.fulfilled]: (state, {payload: {error, message}}) => {
 //     state.loading = false;
 //     if (error) {
 //         state.error = error
 //     } else {
-//         state.msg = msg
+//         state.message = message
 //     }
 // },
 // [signUpUser.rejected]: (state, action) => {
