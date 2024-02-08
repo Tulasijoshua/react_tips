@@ -89,40 +89,6 @@ const authSlice = createSlice({
     }
 })
 
-//*****************login */
-
-// [signInUser.fulfilled]: (state, {payload: {error, msg, token, user}}) => {
-//     state.loading = false;
-//     if (error) {
-//         state.error = error;
-//     } else {
-//         state.msg = msg;
-//         state.token = token;
-//         state.user = user;
-
-//         localStorage.setItem('msg', msg)
-//         localStorage.setItem('user', JSON.stringify(user))
-//         localStorage.setItem('token', token)
-//     }
-// },
-// [signInUser.rejected]: (state, action) => {
-//     state.loading = true
-// },
-// // ******************88 */
-// [signUpUser.pending]: (state, action) => {
-//     state.loading = true
-// },
-// [signUpUser.fulfilled]: (state, {payload: {error, msg}}) => {
-//     state.loading = false;
-//     if (error) {
-//         state.error = error
-//     } else {
-//         state.msg = msg
-//     }
-// },
-// [signUpUser.rejected]: (state, action) => {
-//     state.loading = true
-// }
 
 export const {addToken, addUser, logout} = authSlice.actions;
 export default authSlice.reducer
