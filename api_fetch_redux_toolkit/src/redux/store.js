@@ -1,6 +1,9 @@
-const { configureStore } = "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit'
 import todoReducer from './todoSlicer'
 
 export const store = configureStore({
-    todo: todoReducer
+    reducer: {
+        todo: todoReducer
+
+    }
 })
