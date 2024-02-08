@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { hostName } from "../config";
 
 const initialState = {
-    message: "",
-    data: "",
+    msg: "",
+    user: "",
     token: "",
     loading: false,
     error: ""
@@ -31,7 +31,7 @@ export const signInUser = createAsyncThunk('signinuser', async(body) => {
         body: JSON.stringify(body)
     })
     return await  res.json();
-    // console.log(res.data)
+    // console.log(res.user)
 })
 
 const authSlice = createSlice({
@@ -54,18 +54,18 @@ const authSlice = createSlice({
         .addCase (signInUser.pending, (state, action) => {
             state.loading = true
         })
-        .addCase(signInUser.fulfilled,(state, {payload: {error, message, token, data}}) => {
+        .addCase(signInUser.fulfilled,(state, {payload: {error, message, tokens, data}}) => {
             state.loading = false;
             if (error) {
                 state.error = error;
             } else {
-                state.message = message;
-                state.token = token;
-                state.data = data;
+                state.msg = message;
+                state.token = tokens;
+                state.user = data;
 
-                localStorage.setItem('message', message)
+                localStorage.setItem('msg', message)
                 localStorage.setItem('user', JSON.stringify(data))
-                localStorage.setItem('token', token)
+                localStorage.setItem('token', JSON.stringify(tokens))
             }
         })
         .addCase(signInUser.rejected, (state, action) => {
@@ -79,7 +79,7 @@ const authSlice = createSlice({
             if (error) {
                 state.error = error
             } else {
-                state.message = message
+                state.msg = message
             }
         })
         .addCase(signUpUser.rejected, (state, action) => {
@@ -91,16 +91,16 @@ const authSlice = createSlice({
 
 //*****************login */
 
-// [signInUser.fulfilled]: (state, {payload: {error, message, token, user}}) => {
+// [signInUser.fulfilled]: (state, {payload: {error, msg, token, user}}) => {
 //     state.loading = false;
 //     if (error) {
 //         state.error = error;
 //     } else {
-//         state.message = message;
+//         state.msg = msg;
 //         state.token = token;
 //         state.user = user;
 
-//         localStorage.setItem('message', message)
+//         localStorage.setItem('msg', msg)
 //         localStorage.setItem('user', JSON.stringify(user))
 //         localStorage.setItem('token', token)
 //     }
@@ -112,12 +112,12 @@ const authSlice = createSlice({
 // [signUpUser.pending]: (state, action) => {
 //     state.loading = true
 // },
-// [signUpUser.fulfilled]: (state, {payload: {error, message}}) => {
+// [signUpUser.fulfilled]: (state, {payload: {error, msg}}) => {
 //     state.loading = false;
 //     if (error) {
 //         state.error = error
 //     } else {
-//         state.message = message
+//         state.msg = msg
 //     }
 // },
 // [signUpUser.rejected]: (state, action) => {
