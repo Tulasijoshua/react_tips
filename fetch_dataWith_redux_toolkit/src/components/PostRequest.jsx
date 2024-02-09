@@ -10,10 +10,14 @@ const PostRequest = () => {
         dispatch(getPosts())
     }, [])
 
+    if (loading) {
+        return <h2>Loading.......</h2>
+    }
+
   return (
     <div>
         {posts.map((item, index) => (
-            <h2>{item.title}</h2>
+            <h2 key={index}>{item.title}</h2>
         ))}
     </div>
   )
