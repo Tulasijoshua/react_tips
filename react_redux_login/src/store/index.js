@@ -1,4 +1,5 @@
 export * from './UserSlice'
+export * from './postSlice'
 
 // import { configureStore } from "@reduxjs/toolkit";
 // import userReducer from './UserSlice';
