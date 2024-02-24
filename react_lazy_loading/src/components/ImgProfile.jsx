@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 const ImgProfile = ({ path, placeholder, loadError, ...props }) => {
     const [img, initImg] = useState(placeholder || path);
@@ -21,10 +21,8 @@ const ImgProfile = ({ path, placeholder, loadError, ...props }) => {
           imageObjt.removeEventListener("error", onError);
         };
       }, [path, onLoad, onError]);
-      
-  return (
-    <div>ImgProfile</div>
-  )
+
+  return <img {...props} alt={img} src={img} />;
 }
 
 export default ImgProfile
