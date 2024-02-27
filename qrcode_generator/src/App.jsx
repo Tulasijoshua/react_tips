@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import InputForm from './components/InputForm'
+import QrCode from './components/QrCode'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,7 +11,7 @@ function App() {
       <div className='container mx-auto max-w-4xl bg-white rounded-md shadow'>
         <div className='md:grid md:grid-cols-3'>
           <InputForm />
-          <h1>qrCode</h1>
+          <QrCode />
         </div>
       </div>
     </div>
