@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { ChromePicker } from 'react-color'
 
 const InputColor = () => {
     const [color, setColor] = useState('#054080')
     const [displayColorPicker, setDisplayColorPicker] = useState(false)
+
+    const handleChange = color => setColor(color.hex)
   return (
     <div>
         <label 
@@ -16,7 +19,11 @@ const InputColor = () => {
             <span>{color}</span>
         </div>
         {
-            displayColorPicker && 'ShowcolorPicker'
+            displayColorPicker && (
+                <div className='absolute mt-2'>
+                    <ChromePicker color={color} onChange={handleChange} />
+                </div>
+            )
         }
     </div>
   )
