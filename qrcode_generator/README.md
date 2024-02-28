@@ -9,4 +9,7 @@ Currently, two official plugins are available:
 
 
 Steps to creating a qr code
+Visit the site below to copy your API key
+https://app.qrcode-tiger.com/?type=settings
+
 Download file-saver for saving the qr code.
