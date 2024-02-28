@@ -9,3 +9,4 @@ Currently, two official plugins are available:
 
 
 Steps to creating a qr code
+Download file-saver for saving the qr code.

@@ -1,11 +1,14 @@
 import React, { useContext } from 'react'
 import QRCode from '../assets/qr_code.svg'
 import { InputContext } from '../App';
+import { saveAs } from 'file-saver';
 
 const QrCode = () => {
   const {response, loading, error} = useContext(InputContext);
-  console.log(response)
 
+  const downloadImage = () => {
+    saveAs(response, 'qrCode.png')
+  }
   if(loading) {
     return (
       <div className='animate-pulse flex flex-col items-center justify-center px-10 gap-3'>
@@ -25,11 +28,12 @@ const QrCode = () => {
       <div>
           <img className='w-48' src={response} alt="" />
           <button
+            onClick={downloadImage}
               className='bg-blue-400 text-white mt-2 px-4 py-1 w-full'
           >Download</button>
       </div>
       ) : (
-        <div className=''>Your QrCode will be showing here...</div>
+        <div className='text-gray-500'>Your QrCode will be showing here...</div>
       )}
         
     </div>
