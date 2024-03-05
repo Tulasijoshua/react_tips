@@ -8,7 +8,7 @@ const initialValue = {
 export const Context = createContext();
 
 const reducer = (state = initialValue, action) => {
-    const { type, payload} = action
+    const { type, payload} = action;
 
     switch (type) {
         case "SET_TOGGLE": 

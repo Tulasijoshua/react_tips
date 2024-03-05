@@ -8,6 +8,8 @@ import pl2 from './imgs/Placeholder (2).png'
 import pl3 from './imgs/Placeholder (3).png'
 import pl4 from './imgs/Placeholder (4).png'
 import pl5 from './imgs/Placeholder (5).png'
+
+
 export let Data = [
     {
         icon: 'fa-solid fa-chart-pie',
