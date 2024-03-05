@@ -5,6 +5,7 @@ import { Data } from '../../dates/jummy'
 const Sidebar = () => {
   let {state, dispatch} = useContext(Context)
   const [activeIcon, setActiveIcon] = useState(' fa-solid fa-chart-pie ')
+  const [category, setCategory] = useState(Data[0].inside)
 
   const ClickedIcon = ({icon}) => {
     if (icon === activeIcon)  {
@@ -31,6 +32,7 @@ const Sidebar = () => {
             )
           })}
         </div>
+        <div className={`w-56 ${state.toggle ? 'block' : 'hidden'} h-full overflow-hidden md:overflow-auto py-6 bg-white border-r border-neutral-200`}></div>
       </div>
     </div>
   )
