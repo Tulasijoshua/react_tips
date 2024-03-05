@@ -5,6 +5,15 @@ import { Data } from '../../dates/jummy'
 const Sidebar = () => {
   let {state, dispatch} = useContext(Context)
   const [activeIcon, setActiveIcon] = useState(' fa-solid fa-chart-pie ')
+
+  const ClickedIcon = ({icon}) => {
+    if (icon === activeIcon)  {
+      dispatch({type: 'SET_TOGGLE', payload: !state.toggle})
+    } else {
+      dispatch({type: 'SET_TOGGLE', payload: true})
+      setActiveIcon(icon)
+    }
+  }
   return (
     <div className={`${state.toggleNavbar ? 'block' : 'hidden'}`}>
       <div onClick={() => {
