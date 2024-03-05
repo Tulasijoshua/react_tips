@@ -14,7 +14,11 @@ const Sidebar = () => {
         <div className='flex-col overflow-hidden md:overflow-auto justify-start gap-4 flex bg-zinc-900 px-4 py-6 min-h-full'>
           {Data.map((icon, index) => {
             return (
-              <div className={`p-3.5 cursor-pointer ${activeIcon === icon.icon ? 'text-white bg-gradient-to-bl from-amber-500 to-pink-500' : 'text-neutral-400'} rounded-lg flex-col hover:text-white duration-300 items-center gap-2 flex`}></div>
+              <div onClick={() => {
+                ClickedIcon(icon)
+              }} className={`p-3.5 cursor-pointer ${activeIcon === icon.icon ? 'text-white bg-gradient-to-b from-amber-500 to-pink-500' : 'text-neutral-400'} rounded-lg flex-col hover:text-white duration-300 items-center gap-2 flex`}>
+                <i className={`${icon.icon} text-xl w-6 h-6 text-center`}></i>
+              </div>
             )
           })}
         </div>
