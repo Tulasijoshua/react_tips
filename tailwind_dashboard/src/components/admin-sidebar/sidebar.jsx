@@ -7,6 +7,7 @@ const Sidebar = () => {
   let {state, dispatch} = useContext(Context)
   const [activeIcon, setActiveIcon] = useState(' fa-solid fa-chart-pie ')
   const [category, setCategory] = useState(Data[0].inside)
+  const [activeCat, setActiveCat] = useState('Sales')
 
   const ClickedIcon = ({icon}) => {
     if (icon === activeIcon)  {
@@ -16,6 +17,7 @@ const Sidebar = () => {
       setActiveIcon(icon)
     }
   }
+
   return (
     <div className={`${state.toggleNavbar ? 'block' : 'hidden'}`}>
       <div onClick={() => {
@@ -36,7 +38,11 @@ const Sidebar = () => {
         <div className={`w-56 ${state.toggle ? 'block' : 'hidden'} h-full overflow-hidden md:overflow-auto py-6 bg-white border-r border-neutral-200 flex-col gap-4 inline-flex`}>
           {category.map(({text, icon, url}, index) => {
             return (
-              <Link to={`/admin-dashboard/${url}`}></Link>
+              <Link to={`/admin-dashboard/${url}`} key={index} onClick={() => {setActiveCat(text)}} className={`self-stretch duration-300 cursor-pointer px-[18px] ${activeCat === text ? 'bg-orange-50 bg-opacity-80 border-r-2 border-orange-600' : 'text-zinc-500 hover:bg-neutral-200'} py-3.5 items-center gap-3 inline-flex`}>
+                <div className={`w-6 relative ${activeCat === text ? 'text-orange-600' : 'text-zinc-500'} text-xl`}>
+                  <i className={icon}></i>
+                </div>
+              </Link>
             )
           }) }
         </div>
