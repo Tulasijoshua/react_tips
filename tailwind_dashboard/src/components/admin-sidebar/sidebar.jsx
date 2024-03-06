@@ -9,12 +9,13 @@ const Sidebar = () => {
   const [category, setCategory] = useState(Data[0].inside)
   const [activeCat, setActiveCat] = useState('Sales')
 
-  const ClickedIcon = ({icon}) => {
+  const ClickedIcon = ({icon, inside}) => {
     if (icon === activeIcon)  {
       dispatch({type: 'SET_TOGGLE', payload: !state.toggle})
     } else {
       dispatch({type: 'SET_TOGGLE', payload: true})
       setActiveIcon(icon)
+      setCategory(inside)
     }
   }
 
@@ -42,6 +43,7 @@ const Sidebar = () => {
                 <div className={`w-6 relative ${activeCat === text ? 'text-orange-600' : 'text-zinc-500'} text-xl`}>
                   <i className={icon}></i>
                 </div>
+                <div className={`grow shrink basis-0 ${activeCat === text ? 'text-orange-600 font-semibold' : 'text-zinc-500'} text-sm leading-tight`}>{text}</div>
               </Link>
             )
           }) }
