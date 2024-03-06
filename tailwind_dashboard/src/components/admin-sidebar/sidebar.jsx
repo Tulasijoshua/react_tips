@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Context } from '../../context'
 import { Data } from '../../dates/jummy'
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
   let {state, dispatch} = useContext(Context)
@@ -32,7 +33,13 @@ const Sidebar = () => {
             )
           })}
         </div>
-        <div className={`w-56 ${state.toggle ? 'block' : 'hidden'} h-full overflow-hidden md:overflow-auto py-6 bg-white border-r border-neutral-200`}></div>
+        <div className={`w-56 ${state.toggle ? 'block' : 'hidden'} h-full overflow-hidden md:overflow-auto py-6 bg-white border-r border-neutral-200 flex-col gap-4 inline-flex`}>
+          {category.map(({text, icon, url}, index) => {
+            return (
+              <Link to={`/admin-dashboard/${url}`}></Link>
+            )
+          }) }
+        </div>
       </div>
     </div>
   )
