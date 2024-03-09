@@ -40,7 +40,7 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="flex gap-8 items-center">
-                <img className='w-11 h-11 rounded-full' src='https:via.placeholder.com/44x44' alt='' />
+                <img className='w-11 h-11 rounded-full' src='https://via.placeholder.com/44x44' alt='' />
             </div>
         </div>
     </div>

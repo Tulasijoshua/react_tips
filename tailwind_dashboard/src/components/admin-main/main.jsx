@@ -7,7 +7,7 @@ import Bar from '../charts/bar-graph/bar'
 
 const Main = () => {
   return (
-    <div className='p-6 mb-6 bg-slate-50 min-h-screen'>
+    <div className='p-3 mb-6 bg-slate-50 min-h-screen'>
       <div><Options /></div>
       <div><Cards /></div>
       <div className='flex gap-4 flex-wrap'>
@@ -16,9 +16,9 @@ const Main = () => {
             Selected Location
           </div>
           <div className="gap-2 flex flex-wrap">
-            {dateCards.map(({text, earn, percent, color}) => {
+            {dateCards.map(({text, earn, percent, color}, index) => {
               return (
-                <div className={`grow shrink-0 basis-0 h-[100px] p-3 bg-white rounded-sm shadow border-t-2 ${color} flex-col gap-4 inline-flex`}>
+                <div key={index} className={`grow shrink-0 basis-0 h-[100px] p-3 bg-white rounded-sm shadow border-t-2 ${color} flex-col gap-4 inline-flex`}>
                   <div className="self-stretch text-zinc-500 text-xs font-medium leading-[10px]">
                     {text}
                   </div>
