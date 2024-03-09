@@ -6,7 +6,7 @@ import './App.css'
 function App() {
   const navigate  = useNavigate();
   useEffect(() => {
-    navigate('/admin-dashboard/marketing')
+    navigate('/admin-dashboard/main')
   }, [])
   return (
     <div className='h-screen w-full'>
