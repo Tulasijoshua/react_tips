@@ -43,10 +43,39 @@ const Login = () => {
                 setErrMsg('Login Failed');
             }
             errRef.current.focus();
-            ajskldjf
-    
         }
     }
+
+    const handleUserInput = (e) => setUser(e.target.value);
+
+    const handlePwdInput = (e) => setPwd(e.target.value);
+
+    const content = isLoading ? <h1>Loading...</h1> : (
+        <section className='login'>
+            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}  ></p>
+
+            <h1>Employee Login</h1>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor='username'>Username:</label>
+                <input 
+                    type='text'
+                    id='username'
+                    ref={userRef}
+                    value={user}
+                    onChange={handleUserInput}
+                    autoComplete='off'
+                    required
+                />
+
+                <label htmlFor='password'>Password:</label>
+                <input 
+                    type='password'
+                    id='password'
+                    onChange={handlePwdInput}
+                />
+            </form>
+        </section>
+    )
   return (
     <div>Login</div>
   )
