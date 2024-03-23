@@ -72,13 +72,15 @@ const Login = () => {
                     type='password'
                     id='password'
                     onChange={handlePwdInput}
+                    value={pwd}
+                    required
                 />
+                <button>Sign In</button>
             </form>
         </section>
     )
-  return (
-    <div>Login</div>
-  )
+
+  return content;
 }
 
 export default Login
