@@ -1,26 +1,34 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { register } from '../store/reducers/auth';
 
 const Register = () => {
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-
-    const registerHandle = (e) => {
-        e.preventDefault();
-        console.log(name, email, password)
+    const dispatch = useDispatch();
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const onSubmit = (e) => {
+        e.preventDefault()
+        console.log('register', username, email, password)
+        dispatch(register({email, username, password}))
     }
   return (
-    <div className=''>
-        <div className='flex flex-col items-center'>
+    <div className='flex flex-col items-center'>
         <h3>Register</h3>
-        <label>Name</label>
-        <input className='border' type="text" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
-        <label>Email</label>
-        <input className='border' type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
-        <label>Password</label>
-        <input className='border' type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button onClick={registerHandle} className='mt-33'>Register</button>
-        </div>
+        <form onSubmit={onSubmit}>
+            <div>
+                <input type="text" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} />
+            </div>
+            <div>
+                <input type="text" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div>
+                <input type="text" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+            </div>
+            <div>
+                <button type='submit'>Sign Up</button>
+            </div>
+        </form>
         
     </div>
   )
