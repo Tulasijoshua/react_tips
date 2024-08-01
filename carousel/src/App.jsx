@@ -5,9 +5,9 @@ import {slides} from "./data/carouselData.json";
 function App() {
 
   return (
-    <>
+    <div className='App'>
       <Carousel data={slides} />
-    </>
+    </div>
   )
 }
 
