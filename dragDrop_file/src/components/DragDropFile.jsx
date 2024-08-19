@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 const DragDropFile = () => {
     const [files, setFiles] = useState();
+    const inputRef = useRef();
 
     const handleDragOver = (e) => {
         e.preventDefault();
@@ -27,9 +28,9 @@ const DragDropFile = () => {
                     multiple
                     onChange={e => setFiles(e.target.value)}
                     hidden
-                    ref={}
+                    ref={inputRef}
                 />
-                <button>Select Files</button>
+                <button onClick={() => inputRef.current.click()}>Select Files</button>
             </div>
         )}
     </div>
