@@ -13,6 +13,14 @@ const DragDropFile = () => {
         e.preventDefault();
         console.log(e.dataTransfer.files)
     }
+
+    if (files) return (
+        <div className='uploads'>
+            <ul>
+                {Array.from(files).map((file, idx) => <li key={idx}>{file.name}</li>)}
+            </ul>
+        </div>
+    )
   return (
     <div>
         {!files && (
@@ -26,7 +34,7 @@ const DragDropFile = () => {
                 <input 
                     type="file" 
                     multiple
-                    onChange={e => setFiles(e.target.value)}
+                    onChange={e => setFiles(e.target.files)}
                     hidden
                     ref={inputRef}
                 />
